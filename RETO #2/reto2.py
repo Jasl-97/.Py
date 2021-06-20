@@ -30,14 +30,6 @@ if user_name == user: #condicional para validar si el usuario es correcto de lo 
                 opt=int(input("Elija una opción ==> "))
                 if opt == 1:
                     print("Usted ha elegido la opcion 1")
-                    user_password=input("Ingrese la contraseña ==> ") # si el usuario es correcto pedimos la contraseña 
-                    if user_password == password:
-                        new_password= input("Ingrese la nueva contraseña ==> ")
-                        password= new_password
-                        print(password)
-                        continue
-                    else:
-                        print("Error")
                     break
                 elif opt == 2:
                     print("Usted ha elegido la opcion 2")
@@ -64,6 +56,7 @@ if user_name == user: #condicional para validar si el usuario es correcto de lo 
                                 del (menu[str(opt_favorite)])
                                 continue
                             else:
+
                                 print("Error")
                                 count_error=count_error+1    
                         else:
