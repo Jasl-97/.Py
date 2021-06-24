@@ -56,7 +56,6 @@ if user_name == user: #condicional para validar si el usuario es correcto de lo 
                                 del (menu[str(opt_favorite)])
                                 continue
                             else:
-
                                 print("Error")
                                 count_error=count_error+1    
                         else:
