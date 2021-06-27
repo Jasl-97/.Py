@@ -29,19 +29,19 @@ if user_name == user: #condicional para validar si el usuario es correcto de lo 
                 menu_print()
                 opt=int(input("Elija una opción ==> "))
                 if opt == 1:
-                    print("Usted ha elegido la opcion 1")
+                    print("Usted ha elegido la opción 1")
                     break
                 elif opt == 2:
-                    print("Usted ha elegido la opcion 2")
+                    print("Usted ha elegido la opción 2")
                     break
                 elif opt == 3:
-                    print("Usted ha elegido la opcion 3")
+                    print("Usted ha elegido la opción 3")
                     break
                 elif opt == 4:
-                    print("Usted ha elegido la opcion 4")
+                    print("Usted ha elegido la opción 4")
                     break
                 elif opt == 5:
-                    print("Usted ha elegido la opcion 5")
+                    print("Usted ha elegido la opción 5")
                     break
                 elif opt == 6:
                     opt_favorite=int(input("Seleccione opción favorita ==> "))
@@ -63,6 +63,7 @@ if user_name == user: #condicional para validar si el usuario es correcto de lo 
                             count_error=count_error+1     
                     else: 
                         print("Error")
+                        exit(0)
                         count_error=count_error+1
                 elif opt == 7:
                     print("Hasta pronto")

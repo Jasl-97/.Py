@@ -1,4 +1,4 @@
-import math
+import math 
 #Mensaje de bienvenida
 print("Bienvenido al sistema de ubicación para zonas públicas WIFI")
 
@@ -19,9 +19,22 @@ def menu_print():
     for key in menu: #Recorremos el diccionario "menu" con un ciclo for
         print(key+"."+menu[key]) #imprimimos en pantalla cada clave con cada valor
 
+# creamos la matriz 2x3 para almacenar las coordenadas
+coordenadas=[["EMPTY" for i in range (3)] for j in range (2)] 
+
 #Definimos la matriz de coordenadas predefinida
 zonas_wifi=[['2.698','-76.680','63'],['2.724','-76.693','20'],['2.606','-76.742','680'],['2.698','-76.690','15']]
-
+#Funci+on para calcular la distancia entre las coordenadas 
+def distancia (latitud,longitud):
+    r=6372.795477598
+    a=(latitud-float(zonas_wifi[0][0]))/2
+    b=math.cos(float(latitud))
+    f=a+b
+    c=math.cos(float(zonas_wifi[0][1]))
+    d=(longitud-float(zonas_wifi[1][0]))/2
+    e=math.sqrt(float(f*c*d))
+    dist_1= 2*float(r)*math.asin(e)
+    print(str(dist_1))
 #Condiciones de ingreso a la plataforma          
 user_name= input(("Ingrese el nombre de usuario ==> ")) #capturamos la entrada del usuario
 if user_name == user: #condicional para validar si el usuario es correcto de lo contrario imprimios error
@@ -53,8 +66,7 @@ if user_name == user: #condicional para validar si el usuario es correcto de lo 
                          print("Error") # si la contraseña es incorrecta
                     break
                 elif opt == 2: #condicionales para ingresar a la opcion
-                    print("Usted ha elegido la opción 2")
-                    coordenadas=[["EMPTY" for i in range (3)] for j in range (2)] # creamos la matriz 2x3 para almacenar las coordenadas 
+                    print("Usted ha elegido la opción 2") 
                     print("Debe ingresar las coordenadas con 3 cifras decimales separandolas con un punto") #especificamos como se debe introducir las coordenadas
                     i=0
                     for i in range (3): #recorremos la matriz 
@@ -86,9 +98,7 @@ if user_name == user: #condicional para validar si el usuario es correcto de lo 
                     longitud_promedio=(float(coordenadas[1][0])+float(coordenadas[1][1])+float(coordenadas[1][2]))/3 #promedio de longitud
                     print("La coordenada promedio de todos los puntos es "+"["+"'"+str(round(latitud_promedio,3))+
                     "'"+"]"+","+"'"+str(round(longitud_promedio,3))+"'"+"]") #imprimimos la coordenada promedio de los puntos
-                    
                     #actualizacion de coordenadas
-                    
                     actualizar_coordenada=int(input("Presione 1, 2 o 3 para actualizar las respectivas coordenadas\n"
                     +"presione 0 para regresar al menu ==>")) # pedimos ingresar la opcion para modificar las coordenadas
                     if actualizar_coordenada!= 0 and actualizar_coordenada <= 3: # validamos la opcioni ingresada
@@ -104,15 +114,30 @@ if user_name == user: #condicional para validar si el usuario es correcto de lo 
                                 exit(0)      
                         else:
                             print("Error actualización") # si se ingresa una longitud incorrecta
-                            print("Hasta pronto") # si se ingresa una longitud incorrecta
+                            print("Hasta pronto")
                             exit(0)
                     continue
                 elif opt == 3:
                     print("Usted ha elegido la opción 3")
-                    print("La coordenada [latitud, longitud] 1 : "+"["+"'"+str(coordenadas[0][0])+"'"+","+"'"+str(coordenadas[1][0])+"'"+"]" )
-                    print("La coordenada [latitud, longitud] 2 : "+"["+"'"+str(coordenadas[0][1])+"'"+","+"'"+str(coordenadas[1][1])+"'"+"]" )
-                    print("La coordenada [latitud, longitud] 3 : "+"["+"'"+str(coordenadas[0][2])+"'"+","+"'"+str(coordenadas[1][2])+"'"+"]" )
-                    break
+                    if coordenadas[0][1] == "EMPTY":
+                        print("Error sin registro de coordenadas")
+                    else:    
+                        print("La coordenada [latitud, longitud] 1 : "+"["+"'"+str(coordenadas[0][0])+"'"+","+"'"+str(coordenadas[1][0])+"'"+"]" )
+                        print("La coordenada [latitud, longitud] 2 : "+"["+"'"+str(coordenadas[0][1])+"'"+","+"'"+str(coordenadas[1][1])+"'"+"]" )
+                        print("La coordenada [latitud, longitud] 3 : "+"["+"'"+str(coordenadas[0][2])+"'"+","+"'"+str(coordenadas[1][2])+"'"+"]" )
+                        ubi_actual=int(input("Por favor elija su ubicación actual (1,2 ó 3) para calcular la distancia a los puntos de conexión ==> "))
+                        if ubi_actual == 1:
+                            print("Calculo de la distancia 1 ")
+                            latitud=float(coordenadas[0][0])
+                            longitud=float(coordenadas[1][0])
+                            distancia(latitud,longitud)
+                        elif ubi_actual == 2:
+                            print("Calculo de la distancia 2") 
+                        elif ubi_actual == 3:
+                            print("Calculo de la distancia 3")       
+                        else:
+                            print("Error ubicación") 
+                        break
                 elif opt == 4: #condicionales para ingresar a la opcion
                     print("Usted ha elegido la opción 4")
                     break
